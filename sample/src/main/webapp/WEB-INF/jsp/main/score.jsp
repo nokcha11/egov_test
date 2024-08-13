@@ -26,6 +26,7 @@
 				<td>${score.score_exam_type}</td>
 				<td>${score.score_subject}</td>
 				<td>${score.score_point}</td>
+				<!-- <td>${score.score_point}</td> -->
 			</tr>
 		</c:forEach>
 	</table>
