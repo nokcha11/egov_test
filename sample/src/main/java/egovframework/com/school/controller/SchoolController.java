@@ -29,15 +29,43 @@ public class SchoolController {
 		return "school/schoolList";
 	}
 	
+//	@RequestMapping("/school/getSchoolInfo.do")
+//	public ModelAndView getSchoolInfo(@RequestParam(name="schoolIdx") int schoolIdx) {
+//		ModelAndView mv = new ModelAndView("school/schoolInfo");
+//		
+//		
+//		HashMap<String, Object> schoolInfo = schoolService.selectSchoolInfo(schoolIdx);
+//		mv.addObject("schoolInfo", schoolInfo);
+//		
+//		return mv;
+//	}
+	
 	@RequestMapping("/school/getSchoolInfo.do")
-	public ModelAndView getSchoolInfo(@RequestParam(name="schoolIdx") int schoolIdx) {
-		ModelAndView mv = new ModelAndView("school/schoolInfo");
+//	public ModelAndView getSchoolInfo(@RequestParam(name="schoolIdx") int schoolIdx) {
+	
+	public ModelAndView getSchoolInfo(@RequestParam HashMap<String, Object> ParamMap) {
+		ModelAndView mv = new ModelAndView();
 		
 		
+		int schoolIdx = Integer.parseInt(ParamMap.get("schoolId").toString());
 		HashMap<String, Object> schoolInfo = schoolService.selectSchoolInfo(schoolIdx);
 		mv.addObject("schoolInfo", schoolInfo);
 		
+		mv.setViewName("jsonView");
 		return mv;
 	}
 	
+	@RequestMapping("/school/insertSchoolInfo.do")
+	public ModelAndView insertSchoolInfo(@RequestParam HashMap<String, Object> ParamMap) {
+		ModelAndView mv = new ModelAndView();
+		
+		
+		int resultChk =0;
+		resultChk = schoolService.insertSchoolInfo(ParamMap);
+		
+		mv.addObject("resultChk", resultChk);
+		
+		mv.setViewName("jsonView");
+		return mv;
+	}
 }
