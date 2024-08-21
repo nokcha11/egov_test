@@ -10,5 +10,7 @@ public interface SchoolService {
 	public HashMap<String, Object> selectSchoolInfo(int schoolIdx);
 	
 	public int insertSchoolInfo(HashMap<String, Object> ParamMap);
+	
+	public int deleteSchoolInfo(HashMap<String, Object> ParamMap);
 
 }

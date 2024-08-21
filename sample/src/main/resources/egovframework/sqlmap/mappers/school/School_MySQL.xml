@@ -27,8 +27,12 @@
 				school_area,
 				school_addr,
 				school_phone)
-				VALUES
-				(#{schoolName},#{schoolArea},#{schoolAddr},#{schoolPhone})
+		VALUES (#{schoolName},#{schoolArea},#{schoolAddr},#{schoolPhone})
 	</insert>
+	
+	<delete id="deleteSchoolInfo" parameterType="java.util.HashMap">
+		DELETE FROM tb_school_info
+		where school_id = #{schoolId}
+	</delete>
 	
 </mapper>

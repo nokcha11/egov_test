@@ -13,11 +13,22 @@
   
   <script type="text/javascript">
   $( document ).ready(function() {
+	//insert
 	  $("#btn_insert").on('click', function(){
 		  fn_insertSchool();
 	  })
+	  
+	  //delete
+	  $("#btn_delete").on('click', function(){
+		  fn_deleteSchool();
+	  })
+	  //change
+	  /* $("#schoolName").on('change', function(){
+		  console.log($("#schoolName").val());
+	  }) */
 	});
   
+  	// insert
   	function fn_insertSchool(){
   		
   		var frm = $("#frm").serialize();
@@ -33,6 +44,33 @@
   			success : function(data, textStatus, jqXHR){
   				if(data.resultChk > 0){
   					alert("저장되었습니다.");	
+  				}
+  				
+  			},  				
+  			error: function(jqXHR, textStatus, errorThrown){
+  				console.log("error");
+  			},
+  			complete : function(jqXHR, textStatus){
+  				console.log("complete");
+  			}
+  		});
+  	}
+  	
+  	// delete
+  	function fn_deleteSchool(){
+  		var frm = $("#frm").serialize();
+
+  		$.ajax({
+  			type : 'POST',
+  			url : '/school/deleteSchoolInfo.do',
+  			data : {"schoolId" :19},
+  			dataType : 'json',
+  			beforeSend: function(jqXHR, settings){
+  				console.log("beforeSend");
+  			},
+  			success : function(data, textStatus, jqXHR){
+  				if(data.resultChk > 0){
+  					alert("삭제되었습니다.");	
   				}
   				
   			},  				
@@ -70,6 +108,7 @@
 		</table>
 	</form>
 	<input type="button" id="btn_insert" name="btn_insert" value="저장"/>
+	<input type="button" id="btn_delete" name="btn_delete" value="삭제"/>
 	
 </body>
 </html>
