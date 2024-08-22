@@ -19,7 +19,7 @@
 </head>
 <body>
    <header>
-      <a href="#">헤더</a>
+      <a href="#">header</a>
    </header>
 </body>
 </html>
