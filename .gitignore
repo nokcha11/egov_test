@@ -1,1 +1,13 @@
-/sample/
+plaintext코드 복사
+# Eclipse 설정 파일
+.classpath
+.project
+.settings/
+
+# Maven 빌드 결과물
+target/
+
+# 기타 IDE 및 운영체제 관련 파일
+.metadata/
+*.log
+.DS_Store
