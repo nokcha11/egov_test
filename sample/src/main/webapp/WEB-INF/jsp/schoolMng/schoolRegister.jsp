@@ -62,6 +62,7 @@
 		        if(data.resultChk > 0){
 		        	alert("수정되었습니다.");
 		        	location.href="#";
+		        	//location.href="#";
 		        }
 		    },
 		    error: function (data, status, err) {
