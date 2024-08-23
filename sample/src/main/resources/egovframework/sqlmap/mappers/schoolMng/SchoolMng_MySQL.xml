@@ -40,5 +40,16 @@
 		WHERE school_id = #{schoolId}
 	</delete>
 	
+	<update id="updateSchoolMngInfo" parameterType="java.util.HashMap">
+		UPDATE tb_school_info
+		SET
+			school_id = #{schoolId},
+			school_name = #{schoolName},
+			school_area = #{schoolArea},
+			school_addr = #{schoolArea},
+			school_phone = #{schoolPhone}
+		WHERE school_id =#{schoolId};
+	</update>
+	
 
 </mapper>

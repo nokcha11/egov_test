@@ -19,6 +19,10 @@
 		$("#btn_delete").on('click', function(){
 			fn_deleteSchool();
 		});
+		
+		$("#btn_update").on('click', function(){
+			fn_updateSchool();
+		});
 	});
 	
 	// delete
@@ -48,6 +52,15 @@
   		});
   	}
 	
+ 	// update
+  	function fn_updateSchool(){
+  		var frm = $("#frm");
+		frm.attr("action", "/schoolMng/registerSchool.do");
+		frm.submit();
+		
+  		
+  	}
+	
 </script>
 </head>
 <body>
@@ -75,6 +88,7 @@
 		</table>
 </form>
 	<input type="button" id="btn_delete" name="btn_delete" value="삭제"/>
+	<input type="button" id="btn_update" name="btn_update" value="수정" onclick="javascript:fn_updateSchool();"/>
 	<a href="/schoolMng/getSchoolList.do">목록으로</a>
 </body>
 </html>

@@ -19,7 +19,7 @@
 			fn_insertSchool();
 		});
 		$("#btn_update").on('click', function(){
-			
+			fn_updateSchool();
 		});
 		$("#btn_delete").on('click', function(){
 			
@@ -49,43 +49,69 @@
 		    }
 		});
 	}
+	
+	function fn_updateSchool(){
+		var frm = $("#frm").serialize();
+		$.ajax({
+		    url: '/schoolMng/updateSchoolInfo.do',
+		    method: 'post',
+
+			data : frm,
+		    dataType : 'json',
+		    success: function (data, status, xhr) {
+		        if(data.resultChk > 0){
+		        	alert("수정되었습니다.");
+		        	location.href="#";
+		        }
+		    },
+		    error: function (data, status, err) {
+		    }
+		});
+	}
+	
 </script>
 </head>
 <body>
 	<form id="frm" name="frm">
-		<table style="border: 1px solid #444444;">
-			<tr>
-				<th style="border: 1px solid #444444;">학교명</th>
-				<td style="border: 1px solid #444444; width:200px;">
-					<input type="text" id="schoolName" name="schoolName" value="${schoolInfo.schoolName }"/>
-				</td>
+	<!-- ID값을 넣는다!  -->
+		<input type="hidden" id="schoolId" name="schoolId" value="${schoolInfo.schoolId }"/>
+			<table style="border: 1px solid #444444;">
+				<tr>
+					<th style="border: 1px solid #444444;">학교명</th>
+					<td style="border: 1px solid #444444; width:200px;">
+						<input type="text" id="schoolName" name="schoolName" value="${schoolInfo.schoolName }"/>
+					</td>
+					
+				</tr>
+				<tr>
+					<th style="border: 1px solid #444444;">지역구</th>
+					<td style="border: 1px solid #444444; width:200px;">
+						<input type="text" id="schoolArea" name="schoolArea" value="${schoolInfo.schoolArea }"/>
+					</td>
+				</tr>
+				<tr>
+					<th style="border: 1px solid #444444;">학교 주소</th>
+					<td style="border: 1px solid #444444; width:200px;">
+						<input type="text" id="schoolAddr" name="schoolAddr" value="${schoolInfo.schoolAddr }"/>
+					</td>
+				</tr>
+				<tr>
+					<th style="border: 1px solid #444444;">학교 연락처</th>
+					<td style="border: 1px solid #444444; width:200px;">
+						<input type="text" id="schoolPhone" name="schoolPhone" value="${schoolInfo.schoolPhone }"/>
+					</td>
+				</tr>
 				
-			</tr>
-			<tr>
-				<th style="border: 1px solid #444444;">지역구</th>
-				<td style="border: 1px solid #444444; width:200px;">
-					<input type="text" id="schoolArea" name="schoolArea" value="${schoolInfo.schoolArea }"/>
-				</td>
-			</tr>
-			<tr>
-				<th style="border: 1px solid #444444;">학교 주소</th>
-				<td style="border: 1px solid #444444; width:200px;">
-					<input type="text" id="schoolAddr" name="schoolAddr" value="${schoolInfo.schoolAddr }"/>
-				</td>
-			</tr>
-			<tr>
-				<th style="border: 1px solid #444444;">학교 연락처</th>
-				<td style="border: 1px solid #444444; width:200px;">
-					<input type="text" id="schoolPhone" name="schoolPhone" value="${schoolInfo.schoolPhone }"/>
-				</td>
-			</tr>
-			
-		</table>
+			</table>
 	</form>
+	<c:if test="${flag == 'I' }">
+		<input type="button" id="btn_insert" name="btn_insert" value="저장"/>
+	</c:if>
+	<c:if test="${flag == 'U' }">
+		<input type="button" id="btn_update" name="btn_update" value="수정"/>
+	</c:if>
 	
-	<input type="button" id="btn_insert" name="btn_insert" value="저장"/>
-	<input type="button" id="btn_udpate" name="btn_udpate" value="수정"/>
-	
+
 	<a href="/schoolMng/getSchoolList.do">목록으로</a>
 </body>
 </html>
