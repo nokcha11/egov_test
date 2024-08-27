@@ -6,7 +6,9 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import egovframework.com.studentMng.service.StudentMngService;
@@ -30,6 +32,33 @@ public class StudentMngController {
 		
 		mv.addObject("list", list);
 		mv.setViewName("jsonView");
+		return mv;
+	}
+	
+	@RequestMapping("/studentMng/getStudentMngInfo.do")
+	/*public String getStudentMngInfo(
+			@RequestParam HashMap<String, Object> paramMap,
+			Model model) {
+		
+		if(!paramMap.isEmpty()) {
+			int studentId = Integer.parseInt(paramMap.get("studentId").toString());
+			HashMap<String, Object> studentInfo = studentMngService.selectStudentMngInfo(studentId);
+			model.addAttribute("studentInfo", studentInfo);
+		}
+		
+		return "studentMng/studentMngDetail";
+	}*/
+	
+	public ModelAndView getStudentMngInfo(@RequestParam HashMap<String, Object> paramMap) {
+		ModelAndView mv = new ModelAndView();
+		
+		if(!paramMap.isEmpty()) {
+			int studentId = Integer.parseInt(paramMap.get("studentId").toString());
+			HashMap<String, Object> studentInfo = studentMngService.selectStudentMngInfo(studentId);
+			mv.addObject("studentInfo", studentInfo);
+		}
+		
+		mv.setViewName("studentMng/studentMngDetail");
 		return mv;
 	}
 	
