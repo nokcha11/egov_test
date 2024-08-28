@@ -57,7 +57,7 @@
 		frm.attr("method", "POST");
 		frm.attr("action", "/studentMng/getStudentMngInfo.do");
 		frm.submit();
-		alert(studentId);
+		//console log(studentId);
 	}
 	
 </script>
@@ -81,5 +81,6 @@
 	<tbody id="bodyList">
 	</tbody>
 	</table>
+	<a href="/studentMng/registStudentMng.do">등록</a>
 </body>
 </html>

@@ -6,7 +6,9 @@ import java.util.List;
 public interface StudentMngService {
 	public List<HashMap<String, Object>> selectStudentMngList();
 	
-	public HashMap<String, Object> selectStudentMngInfo(int studentlId);
+	public HashMap<String, Object> selectStudentMngInfo(int studentId);
 	
-	public int insertStudentMngList(HashMap<String, Object> paramMap);
+	public int insertStudentMng(HashMap<String, Object> paramMap);
+	
+
 }

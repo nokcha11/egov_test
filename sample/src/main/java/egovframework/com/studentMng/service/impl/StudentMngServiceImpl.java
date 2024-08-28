@@ -30,10 +30,10 @@ public class StudentMngServiceImpl extends EgovAbstractServiceImpl implements St
 	}
 
 	@Override
-	public int insertStudentMngList(HashMap<String, Object> paramMap) {
+	public int insertStudentMng(HashMap<String, Object> paramMap) {
 		// TODO Auto-generated method stub
 		int resultChk = 0;
-		resultChk = studentMngDAO.insertStudentMngList(paramMap);
+		resultChk = studentMngDAO.insertStudentMng(paramMap);
 		return resultChk;
 	}
 	
