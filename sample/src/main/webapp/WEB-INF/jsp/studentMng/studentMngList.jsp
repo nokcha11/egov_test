@@ -57,7 +57,7 @@
 		frm.attr("method", "POST");
 		frm.attr("action", "/studentMng/getStudentMngInfo.do");
 		frm.submit();
-		//console log(studentId);
+		console.log(studentId);
 	}
 	
 </script>
